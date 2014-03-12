@@ -127,15 +127,13 @@ colorscheme monokei
 let g:SuperTabDefaultCompletionType = "context"
 
 let g:syntastic_enable_signs=1
-"let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 let g:indent_guides_guide_size = 1
-
-
 
 let mapleader = ","
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
+"let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 filetype on
 compiler ruby
