@@ -29,7 +29,6 @@ Bundle 'tpope/vim-haml.git'
 Bundle 'henrik/vim-indexed-search.git'
 Bundle 'tpope/vim-markdown.git'
 Bundle 'edsono/vim-matchit.git'
-"Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat.git'
@@ -46,21 +45,13 @@ Bundle 'kien/ctrlp.vim.git'
 Bundle 'gregsexton/gitv'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/syntastic'
-Bundle 'mattn/webapi-vim'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'vim-scripts/Tagbar.git'
 Bundle 'nathanaelkane/vim-indent-guides.git'
-Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'tpope/vim-dispatch.git'
-"Bundle 'pgr0ss/vimux-ruby-test.git'
-"Bundle 'airblade/vim-gitgutter'
-Bundle 'jaromero/vim-monokai-refined'
-Bundle 'sickill/vim-monokai'
-Bundle 'tomasr/molokai'
-Bundle 'dhruvasagar/vim-railscasts-theme.git'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'itchyny/calendar.vim.git'
+Bundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on     " required! "
 
@@ -121,7 +112,7 @@ set undodir=~/tmp/vim/
 syntax enable
 set background=dark
 "set clipboard=unnamedplus
-colorscheme monokei
+colorscheme Tomorrow-Night
 "colorscheme solarized
 
 let g:SuperTabDefaultCompletionType = "context"
