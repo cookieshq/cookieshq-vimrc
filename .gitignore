@@ -2,3 +2,9 @@ tags
 *~
 *.swp
 .VimballRecord
+bundle/
+after/
+autoload/
+doc/
+indent/
+plugin/

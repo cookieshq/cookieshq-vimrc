@@ -51,7 +51,6 @@ Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'tpope/vim-dispatch.git'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on     " required! "
 
@@ -90,7 +89,7 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*/.hg/*
 set wildignore+=*/.git/*
 set list
-set rnu
+set nu
 set listchars=tab:»·
 set listchars+=trail:·
 set formatoptions-=o
@@ -115,7 +114,7 @@ set background=dark
 colorscheme Tomorrow-Night
 "colorscheme solarized
 
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:syntastic_enable_signs=1
 
@@ -123,6 +122,7 @@ let g:indent_guides_guide_size = 1
 
 let mapleader = ","
 
+" We use silversearch as a replacement for ack-grep
 let g:ackprg = 'ag --nogroup --nocolor --column'
 "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
@@ -140,11 +140,7 @@ endfunction
 "use the . in VMODE
 vnoremap . :norm.<CR>
 
-"Mapping
-
-	"make <c-l> clear the highlight as well as redraw
-	nnoremap <C-L> :nohls<CR><C-L>
-	inoremap <C-L> <C-O>:nohls<CR>
+" Mappings
 
 	"map to bufexplorer
 	nnoremap <C-B> :BufExplorer<CR>
@@ -172,11 +168,6 @@ vnoremap . :norm.<CR>
 	" nnoremap ; :
 	nnoremap <Leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" "ruby
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complet
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "omnifunc=rubycomplete#Complete is set by rails.vim
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
@@ -197,7 +188,6 @@ nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
 
-
 " Align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
@@ -212,6 +202,7 @@ function! s:align()
   endif
 endfunction
 
+" Ctags
 let Tlist_Use_Right_Window = 1
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -221,8 +212,10 @@ map <F4> :TagbarToggle<CR>
 " bind control-l to hashrocket
 imap <C-l> <Space>=><Space>
 
+" Switch between file and buffers
 nmap ## <C-^>
 
+" Clean whitespace on save
 autocmd BufWritePre  *  call StripTrailingWhite()
 
 function! StripTrailingWhite()
@@ -242,8 +235,6 @@ vnoremap <C-S-K> :m-2<CR>gv=gv
 
 " Yank Ring
 nnoremap <C-F11> :YRShow<CR>
-
-" yankring
 let g:yankring_replace_n_pkey = '<leader>['
 let g:yankring_replace_n_nkey = '<leader>]'
 
@@ -253,18 +244,6 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-
-" window
-"nmap <leader>sw<left>  :topleft  vnew<CR>
-"nmap <leader>sw<right> :botright vnew<CR>
-"nmap <leader>sw<up>    :topleft  new<CR>
-"nmap <leader>sw<down>  :botright new<CR>
-
-" buffer
-"nmap <leader>s<left>   :leftabove  vnew<CR>
-"nmap <leader>s<right>  :rightbelow vnew<CR>
-"nmap <leader>s<up>     :leftabove  new<CR>
-"nmap <leader>s<down>   :rightbelow new<CR>
 
 let g:AutoCloseExpandEnterOn = ""
 
@@ -282,19 +261,12 @@ imap <left> <nop>
 imap <right> <nop>
 
 
-let g:multi_cursor_use_default_mapping=0
-" Multi cursor Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
 
 " Gvim startup size
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window.
   set lines=160 columns=150
-
 endif
 
 autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
@@ -323,6 +295,7 @@ if has("autocmd")
 endif
 
 
+" Make control-p faster
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
   \ 'file': '\.exe$\|\.so$\|\.dat$'
@@ -335,8 +308,5 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+
 let g:airline_powerline_fonts = 1
-
-
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
