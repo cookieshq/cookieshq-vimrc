@@ -124,6 +124,7 @@ let mapleader = ","
 
 " We use silversearch as a replacement for ack-grep
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ack_wildignore = 0
 "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 filetype on
